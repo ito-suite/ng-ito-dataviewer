@@ -1,0 +1,15 @@
+include _mixin_form
+include _mixin_buttons
+include _mixin_media
+include _mixin_rating
+
+div(style='width:200px;margin:20px')
+	form.asset-basic(action='asset-basic', method='put')
+		+input('text','asset.title', null, null)
+		+input('text','asset.description', null, null)
+		+input('select','asset.category', 'settings.categories', null)
+		+input('select','asset.license', 'settings.licenses.assets',null)
+		+stars
+		+media('thumbnail')
+		+button('Update','put(asset._id)','btn-success btn-small','fa-check', '$scope.form.dirty')
+		+button('Cancel','put(asset._id)','btn-danger btn-small','fa-times', '$scope.form.dirty')

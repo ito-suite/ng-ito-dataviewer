@@ -1,0 +1,100 @@
+@import (less) "../../../bower_components/bootstrap-css-only/css/bootstrap.min.css";
+@import (less) "../../../bower_components/angular-busy/angular-busy.css";
+@import (less) "../../../bower_components/fontawesome/css/font-awesome.min.css";
+
+body {
+  background:#bbb;
+  color:#000!important;
+  font-family:Georgia;
+}
+
+.notouch {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.ratingSolo {
+  .notouch();
+  cursor: default;
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  margin: -65px 0 0 55px;
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: center;
+  text-shadow: 0 0 5px #002, 1px 0 #002, -1px 0 #002,0 -1px #002, 0 1px #002;
+  font-size: 1em;
+
+  .star.active:before,
+  .star:hover ~ .star:before {
+    color: inherit;
+    text-shadow: inherit;
+  }
+
+  .star.activeLowVote:before,
+  .star.active ~ .star:before {
+    content: "\f005";
+    color: #777777;
+  }
+
+  .star.activeMedVote:before,
+  .star.active ~ .star:before {
+    content: "\f123";
+    color: #e3cf7a;
+  }
+
+  .star.activeHighVote:before,
+  .span.star.active ~ .star:before {
+    content: "\f005";
+    color: #e3cf7a;
+  }
+}
+
+
+// THE STAR SYSTEM
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align:center;
+}
+.rating span.star {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+}
+.rating span.star:hover {
+  cursor: pointer;
+}
+.rating span.star:before {
+  content: "\f005";
+  padding-right: 5px;
+  color: #777777;
+}
+.rating span.star:hover:before,
+.rating span.star:hover ~ span.star:before {
+  color: #cccccc;
+  text-shadow: 0 0 5px #ff0,1px 0 #ff0,-1px 0 #ff0,0 -1px #ff0,0 1px #ff0;
+}
+
+.rating span.star.active:before,
+.rating span.star.active ~ span.star:before {
+  content: "\f005";
+  color: #e3cf7a;
+}
+
+.rating.ratingSolo span.star.active:before,
+.rating.ratingSolo span.star:hover ~ span.star:before {
+  color: inherit;
+  text-shadow: 0 0 5px #002,1px 0 #002,-1px 0 #002,0 -1px #002,0 1px #002;
+}
+
+.rating:first-child {
+  text-shadow: 0 0 5px #002,1px 0 #002,-1px 0 #002,0 -1px #002,0 1px #002;
+}

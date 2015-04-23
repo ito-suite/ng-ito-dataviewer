@@ -1,0 +1,8 @@
+mixin button(text, action, style, icon, when)
+	.btn(
+		ng-if=when
+		class=style
+		ng-click=action
+	)
+		.fa(class=icon) &nbsp;
+		span(i18n=text)= text

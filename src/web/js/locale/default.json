@@ -1,0 +1,103 @@
+{
+  "@context": {
+    "name": "http://schema.org/name",
+    "image": {
+      "@id": "http://schema.org/image",
+      "@type": "@id"
+    },
+    "homepage": {
+      "@id": "http://schema.org/url",
+      "@type": "@id"
+    }
+  },
+  "name" : "Denjell",
+  "image" : "/asdk2379hskdfjh23k",
+  "homepage" : "http://example.com/"
+}
+
+        // alternatively
+{
+  "@context": "http://json-ld.org/contexts/person.jsonld",
+  "name" : "Denjell",
+  "image" : "/asdk2379hskdfjh23k",
+  "homepage" : "http://example.com/"
+}
+
+"aggregateRating":{
+"@type":"AggregateRating",
+"ratingValue":"4",
+"ratingCount":"33"
+},
+
+TEST CSRF
+http://stackoverflow.com/questions/18773846/how-to-test-endpoints-protected-by-csrf-in-node-js-express
+
+
+filehash: String,
+reference_image_id: Schema.Types.ObjectId,
+location: { type: [], index: '2d' },
+visible: { type: Boolean, default: false },
+contributor_id: String,
+team_id: String,
+created_at: Date,
+updated_at: Date,
+starrers: { type: Number, default: 0 },
+stars: { type: Number, default: 0 },
+looks: { type: Number, default: 0 },
+category: {type: String, default: 'Unclassified'}
+
+// file info
+
+original_filename: String,
+filename: String,
+mime_type: String,
+status: Number,
+filehash: String,
+size: Number,
+chunks_loaded: Number,
+chunks_total: Number,
+clean: Boolean,
+uuid: String,
+
+// access control
+
+access_rights : {
+type : String,
+default : 'Private',
+enum : ['Private', 'Public', 'Organization', 'None'] // None is for "deleted" items
+},
+
+// relations
+
+collection_id: Schema.Types.ObjectId,
+license_id: String,
+author_id: Schema.Types.ObjectId,
+contributor_id: Schema.Types.ObjectId,
+
+// document specific (db)
+
+type : {
+type : String,
+default : 'Collection',
+enum : ['Collection', 'Dataset', 'Event', 'Image', 'MovingImage', 'StillImage', 'InteractiveResource', 'Service', 'Software', 'Sound', 'Text', 'PhysicalObject']
+},
+created_at: Date,
+updated_at: Date,
+
+// file assets
+
+original_url: String,
+
+title: String,
+description: String,
+tags: [String],
+
+// other info
+
+location: Schema.Types.Mixed,            // latlong
+temporal_start: Date,
+temporal_end: Date,
+rights_holder: String,
+date_created: Date,
+creator: String,          // The creator of the work (A profile)
+publisher: String        // The publisher of the work (A profile - should default to Gängeviertel)

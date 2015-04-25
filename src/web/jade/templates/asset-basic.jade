@@ -3,13 +3,25 @@ include _mixin_buttons
 include _mixin_media
 include _mixin_rating
 
-div(style='width:200px;margin:20px')
-	form.asset-basic(action='asset-basic', method='put')
-		+input('text','asset.title', null, null)
-		+input('text','asset.description', null, null)
-		+input('select','asset.category', 'settings.categories', null)
-		+input('select','asset.license', 'settings.licenses.assets',null)
-		+stars
-		+media('thumbnail')
-		+button('Update','put(asset._id)','btn-success btn-small','fa-check', '$scope.form.dirty')
-		+button('Cancel','put(asset._id)','btn-danger btn-small','fa-times', '$scope.form.dirty')
+div.asset-basic(ng-controller='Site.Welcome')
+	form.form-horizontal(action='asset-basic', method='put' ng-repeat='asset in assets')
+		div.row
+			div.col-xs-12.col-md-4
+				+media('custom-image',250,150,"hello")
+				+stars
+			div.col-xs-12.col-md-8
+				+input('text','asset.title', null, null)
+				+input('textarea','asset.description', null, null)
+				+input('select','asset.category', 'settings.categories', null)
+				+input('select','asset.license', '["red","blue","green"]',null)
+				+input('radio','asset.visible', "{'list':['public','private','green']}" ,null)
+				+input('radio','asset.visible', "{'list':['public','private','green']}" ,null)
+				+input('checkbox','asset.private', null ,null)
+
+		div.row
+			div.div.col-xs-12.right
+				+button('Update','put(asset._id)','btn-success btn-small','fa-check', '$scope.form.dirty')
+				span &nbsp;
+				+button('Cancel','put(asset._id)','btn-default btn-small','fa-times', '$scope.form.dirty')
+				span &nbsp;
+				+button('Delete','put(asset._id)','btn-danger btn-small','fa-trash', '$scope.form.dirty')

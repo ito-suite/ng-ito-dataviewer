@@ -1,25 +1,49 @@
-mixin media(field_type)
+mixin mime(type)
+	// type is one of: "icon","icontext","text"
+	.mimetype()
 
-	div(class=field_type)
-		if field_type == 'thumbnail'
+mixin media(field_type, width, height, clickaction)
+
+
+	div(class=field_type style="text-align:center")
+
+		if field_type == 'custom-image'
+			- _src = 'http://placehold.it/'+ width + 'x' + height + '/0000cc/000000'
+			- _clickaction = 'alert("' + clickaction+ '")'
+
 			img(
+				src=_src
+				//ng-if='asset.customUrl'
+				ng-src='asset.thumbnailUrl'
+				alt='{{asset.title}}'
+
+				onclick=_clickaction
+			)
+
+		else if field_type == 'thumbnail-image'
+			img(
+				src='http://placehold.it/80x80/0000cc/000000'
 				ng-if='asset.thumbnailUrl'
 				ng-src='asset.thumbnailUrl'
 				alt='{{asset.title}}'
 			)
-		else if field_type == 'med-image'
+		else if field_type == 'medium-image'
 			img(
-				ng-src='asset.mediumUrl' alt='{{asset.title}}'
+				src='http://placehold.it/240x240/0000cc/000000'
+				ng-src='asset.mediumUrl'
+				alt='{{asset.title}}'
 			)
-		else if field_type == 'lg-image'
+		else if field_type == 'large-image'
 			img(
-				ng-src='asset.largeUrl' alt='{{asset.title}}'
+				src='http://placehold.it/800x800/0000cc/000000'
+				ng-src='asset.largeUrl'
+				alt='{{asset.title}}'
 			)
 		else if field_type == 'video'
 			+controls('video')
 			video(
 				autoplay='false'
-				poster='asset.poster'
+				poster='{{asset.posterUrl}}'
 			)
 				src
 		else if field_type == 'audio'

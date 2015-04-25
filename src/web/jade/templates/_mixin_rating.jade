@@ -9,23 +9,23 @@ mixin star
 mixin stars
 	.rating
 		span.star(
-			ng-click="star(5,asset._id)"
+			ng-click="rate(5,asset._id)"
 			ng-class="{'active':asset.userRatingValue =='5'}"
 		)
 		span.star(
-			ng-click="star(4,asset._id)"
+			ng-click="rate(4,asset._id)"
 			ng-class="{'active':asset.userRatingValue =='4'}"
 		)
 		span.star(
-			ng-click="star(3,asset._id)"
+			ng-click="rate(3,asset._id)"
 			ng-class="{'active':asset.userRatingValue =='3'}"
 		)
 		span.star(
-			ng-click="star(2,asset._id)"
+			ng-click="rate(2,asset._id)"
 			ng-class="{'active':asset.userRatingValue =='2'}"
 		)
 		span.star(
-			ng-click="star(1,asset._id)"
+			ng-click="rate(1,asset._id)"
 			ng-class="{'active':asset.userRatingValue =='1'}"
 		)
 

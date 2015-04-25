@@ -30,10 +30,13 @@ $ npm init && bower init && gulp
 Make a feature branch on your fork and make a pull request against the dev branch. (Unless there is no dev branch, in which case pull against master.)
 
 
+
+## ROADMAP
+
 #### TO DO SYSTEM
 
 - [X] Jade Mixins
-- [-] Gulp DEV Watch with Browser Sync
+- [X] Gulp DEV Watch with Browser Sync
 - [ ] Gulp PROD Build for ITO-Suite
 - [ ] Jade builder from JSON
 - [ ] Tests (basic)

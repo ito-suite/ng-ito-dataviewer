@@ -12,8 +12,6 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync').create(),
     reload      = browserSync.reload;
 
-// todo: copy the fonts to dist/web
-
 var banner = ['/**',
     ' * <%= pkg.name %> - <%= pkg.description %>',
     ' * @version v<%= pkg.version %>',
@@ -29,7 +27,7 @@ var banner = ['/**',
 
 
 gulp.task('fonts', function(){
-    return gulp.src('bower_components/fontawesome/fonts')
+    return gulp.src('bower_components/fontawesome/fonts/*')
         .pipe(gulp.dest('dist/web/fonts'));
 });
 
@@ -52,14 +50,24 @@ gulp.task('modernizr', function () {
 
 gulp.task('js-deps', ['modernizr'], function () {
     return gulp.src([
-        'bower_components/ng-file-upload/angular-file-upload-html5-shim.min.js',
+        'bower_components/ng-file-upload/angular-file-upload-shim.min.js',
         'lib/modernizr/modernizr-custom.min.js',
-        'bower_components/angular/angular.min.js',
-        'bower_components/angular-route/angular-route.min.js',
-        'bower_components/angular-animate/angular-animate.min.js',
+        'bower_components/angular/angular.js',
+        'bower_components/angular/angular.js',
+        'bower_components/angular-aria/angular-aria.js',
+        'bower_components/angular-material/angular-material.js',
+        'bower_components/angular-route/angular-route.js',
+        'bower_components/angular-animate/angular-animate.js',
         'bower_components/angular-busy/angular-busy.js',
-        'bower_components/ng-file-upload/angular-file-upload.min.js',
-        'bower_components/async/lib/async.js'
+        'bower_components/ng-file-upload/angular-file-upload.js',
+        'bower_components/async/lib/async.js',
+        'bower_components/angular-locker/dist/angular-locker.js',
+        'bower_components/angular-touch/angular-touch.js',
+        'bower_components/angular-touch/angular-touch.js',
+        'bower_components/angular-touch/angular-touch.js',
+        'bower_components/angular-touch/angular-touch.js',
+
+
     ])
         .pipe(concat('ng-ito-dataviewer-dependencies.min.js'))
         .pipe(header(banner, {pkg: pkg}))
@@ -80,8 +88,8 @@ function jsPipe(src, destPath) {
 
 gulp.task('js-web', function () {
     return jsPipe(gulp.src([
-        'configuration.js',
-        './src/shared/js/**/*.js',
+        //'configuration.js',
+        //'./src/shared/js/**/*.js',
         './src/web/js/**/*.js'
     ]), './dist/web/js/');
 });
@@ -151,7 +159,6 @@ gulp.task('serve', function() {
     browserSync.init({
         server: "./dist/web/"
     });
-    gulp.watch("dist/web/*.html").on('change', reload);
 
 });
 

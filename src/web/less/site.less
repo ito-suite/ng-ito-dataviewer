@@ -1,11 +1,28 @@
-@import (less) "../../../bower_components/bootstrap-css-only/css/bootstrap.min.css";
+//@import (less) "../../../bower_components/bootstrap-css-only/css/bootstrap.min.css";
+// todo: bootswatch should be imported at the DISTRO LEVEL
+
+@import (less) "../../../bower_components/angular-material/angular-material.min.css";
+@import (less)"../../../bower_components/bootswatch/paper/bootstrap.css";
+//@import "../../../bower_components/bootswatch/paper/variables.less";
+//@import "../../../bower_components/bootswatch/paper/bootswatch.less";
 @import (less) "../../../bower_components/angular-busy/angular-busy.css";
 @import (less) "../../../bower_components/fontawesome/css/font-awesome.min.css";
 
 body {
-  background:#bbb;
-  color:#000!important;
-  font-family:Georgia;
+  background:#eef;
+  color:#000;
+  //font-family:sans;
+  width:100%;
+  height:100%;
+  padding:10px;
+}
+
+form {
+}
+
+.right {
+  text-align:right;
+  color:blue;
 }
 
 .notouch {
@@ -17,6 +34,122 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
+
+// FORM ELEMENTS //
+.help-block {
+  color:#555!important;
+}
+
+label {
+  font-weight:400;
+  opacity:0.9;
+  cursor:pointer;
+}
+input {
+  background:transparent;
+}
+.infotext_button{
+  opacity:0.5;
+  cursor:pointer;
+}
+.infotext_button:hover,.infotext_button:active {
+  opacity:1;
+}
+
+// checkbox / radio
+input[type="radio"],
+input[type="checkbox"] {
+  //  display:none;
+  position:absolute;
+  opacity:0;
+  cursor:pointer;
+  width:40px;
+}
+input[type="radio"] + span:before,
+input[type="checkbox"] + span:before {
+  margin: 10px 0 0 -20px;
+  font-family: 'FontAwesome';
+  font-style: normal;
+  font-weight: 400;
+  font-size:1.5em;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+input[type="radio"] + span:before {
+  content: "\f10c"; /* circle-blank */
+}
+input[type="radio"]:checked + span:before {
+  content: "\f111"; /* circle */
+}
+input[type="checkbox"] + span:before {
+  content: "\f046"; /* check-empty */
+}
+input[type="checkbox"]:checked + span:before {
+  content: "\f096"; /* check */
+}
+
+
+// mimetype styles //
+
+.mimetype {
+  display: inline-block!important;
+  margin:0.1em 0.7em 0 0;
+}
+.mimetype:before {
+  font-family: FontAwesome;
+  display: inline-block!important;
+  margin:0.1em 0.7em 0 0;
+}
+
+a.mimetype {
+  margin:0 0 0 0;
+  border:0px solid transparent!important;
+  padding:0px;
+}
+// this is used on the splash page
+a.mimetype:before {
+  font-family: FontAwesome;
+  position:absolute;
+  display:block!important;
+  margin:0 0 0 2px!important;
+  padding:0;
+}
+//this version is used on the overview page
+.mimetype.largeIcon:before {
+  font-family: FontAwesome;
+  position:absolute;
+  width:90px;
+  height:90px;
+  margin:30px 0 0 -20px;
+  color:#000;
+  font-size:1.3em;
+
+}
+//this version is used on the upload page
+.mimetype.noPreview:before {
+  font-family: FontAwesome;
+  position:relative;
+  width:90px;
+  height:90px;
+  margin:20px auto;
+  color:#000;
+  font-weight:700;
+}
+
+.mimetype.text:before       {  content: "\f0f6";}
+.mimetype.video:before      {  content: "\f1c8";}
+.mimetype.audio:before      {  content: "\f1c7";}
+.mimetype.image:before      {  content: "\f1c5";}
+.mimetype.application:before{  content: "\f016";}
+.mimetype.archive:before    {  content: "\f1c6";}
+.mimetype.pdf:before        {  content: "\f1c1";}
+.mimetype.code:before       {  content: "\f1c9";}
+.mimetype.unknown:before    {  content: "\f016";}
+
+
+
+// rating styles //
 
 .ratingSolo {
   .notouch();
@@ -62,6 +195,7 @@ body {
   unicode-bidi: bidi-override;
   direction: rtl;
   text-align:center;
+  font-size:1.5em;
 }
 .rating span.star {
   font-family: FontAwesome;
@@ -79,7 +213,7 @@ body {
 }
 .rating span.star:hover:before,
 .rating span.star:hover ~ span.star:before {
-  color: #cccccc;
+  color: #221;
   text-shadow: 0 0 5px #ff0,1px 0 #ff0,-1px 0 #ff0,0 -1px #ff0,0 1px #ff0;
 }
 

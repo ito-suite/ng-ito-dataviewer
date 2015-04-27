@@ -5,7 +5,7 @@ mixin mime(type)
 mixin media(field_type, width, height, clickaction)
 
 
-	div(class=field_type style="text-align:center")
+	div(flex class=field_type)
 
 		if field_type == 'custom-image'
 			- _src = 'http://placehold.it/'+ width + 'x' + height + '/0000cc/000000'
@@ -13,10 +13,8 @@ mixin media(field_type, width, height, clickaction)
 
 			img(
 				src=_src
-				//ng-if='asset.customUrl'
 				ng-src='asset.thumbnailUrl'
 				alt='{{asset.title}}'
-
 				onclick=_clickaction
 			)
 
@@ -30,7 +28,6 @@ mixin media(field_type, width, height, clickaction)
 		else if field_type == 'medium-image'
 			img(
 				src='http://placehold.it/240x240/0000cc/000000'
-				ng-src='asset.mediumUrl'
 				alt='{{asset.title}}'
 			)
 		else if field_type == 'large-image'
@@ -53,8 +50,6 @@ mixin media(field_type, width, height, clickaction)
 			)
 				src
 
-
-// taken from archive - edit.jade
 mixin player(type)
 	.media(style='width:100%;margin:0!important')
 		.overlay(style='margin:5px -15px!important')

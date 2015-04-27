@@ -1,11 +1,9 @@
-mixin inputHolder
-	div.col-xs-12.col-md-9
-
 mixin label(field_key)
 	- var ng_label = field_key+'{{asset._id}}'
 	//- var ng_infotext = 'infotext("'+ field_key +'")'
 	- var ng_infotext = field_key+'{{asset._id}}-help = !'+field_key+'{{asset._id}}-help'
-	div.col-xs-12.col-md-3.right
+
+//	div
 		label(
 			for=ng_label
 			i18n-source=field_key
@@ -22,128 +20,126 @@ mixin helptext(field_key)
 	span.help-block(
 		id=help_id
 		i18n-source=help_i18n
-		//ng-if=ng_infotext
-		ng-hide='ng_infotext'
+		ng-if=ng_infotext
 	)= help_i18n
 
 mixin input(field_type, field_key, resource_list, sys_val)
-	- var _id = field_key+'{{asset._id}}'
-	- var help_label = field_key+'{{asset._id}}-help'
+	- var _id = field_key+'{{asset.id}}'
+	- var help_label = field_key+'{{asset.id}}-help'
+	- var repeat = 'option in '+resource_list;
+	- var _ng_field_key = '{{' + field_key + '}}'
 
-	div.inputs.row(
+	div(
 		class=field_type
 	)
-		+label(field_key)
+		//+label(field_key)
 		if sys_val
 				span.sys_val(
 					ng-content=field_key
 				)
 		else
-			div.col-xs-12.col-md-9
+			div
 				if field_type == 'file'
 					input(
-						id=_id
-						name=_id
-						type='file'
-						ng-if='asset.editable'
-						aria-describedby=help_label
+					id=_id
+					name=_id
+					type='file'
+					aria-label=help_label
+					ng-model=field_key
 					)
 
 					img(
-						ng-src='asset.contentUrl'
-						alt='asset.title'
-						ng-if='!asset.editable'
+					ng-src='asset.contentUrl'
+					alt='asset.title'
+					ng-if='!asset.editable'
 					)
 					+helptext(field_key)
-				else if field_type == 'select'
-					// should be able to use array or list. :(
-					- var repeat = 'option in '+resource_list;
-					select(
-						id=_id
-						name=_id
-						ng-repeat=repeat
-						ng-if='asset.editable'
-						ng-value=field_key
-						aria-describedby=help_label
-					)
-						option(
-							ng-value='option.title'
-							name=_id
-							i18n-source='option.title'
-						)
 
-					span(
-						name=field_key
-						ng-content=field_key
-						ng-if='!asset.editable'
+
+				else if field_type == 'slider'
+					//
+					md-slider(
+					flex
+					min="0"
+					max="255"
+					ng-model=field_key
 					)
 
 				else if field_type == 'textarea'
-					textarea(
-						id=_id
-						name=_id
-						ng-if='asset.editable'
-						ng-value=field_key
-						class='form-control'
-						rows='3'
-						style='resize: vertical'
-						aria-describedby=help_label
-					) {{field_key}}
+					md-input-container
 
-					span(
-						name=field_key
-						ng-content=field_key
-						ng-if='!asset.editable'
-					)
+						textarea(
+						ng-model=field_key
+						placeholder=field_key
+						ng-if='asset.editable'
+						value=_ng_field_key
+						class='form-control'
+						rows='1'
+						style='resize: vertical'
+						aria-label=help_label
+						)= _ng_field_key
 
 				else if field_type == 'checkbox'
-					md-switch(
-						ng-model="data.cb1"
-						aria-label="Switch 1"
-						class="md-warn"
-					) {{ data.cb1 }}
-					//input(
-						id=_id
-						name=_id
-						type=field_type
-						ng-if='asset.editable'
-						ng-value=field_key
-						aria-describedby=help_label
-						)
-					//span(
-						name=field_key
-						ng-content=field_key
-						ng-if='!asset.editable'
-						)
+					md-checkbox(
+					ng-model=field_key
+					aria-label=help_label
+					class="md-warn"
+					ng-if='asset.editable'
+					)= _ng_field_key
 
+				else if field_type == 'switch'
+					md-switch(
+					ng-model=field_key
+					aria-label=help_label
+					class="md-warn"
+					ng-if='asset.editable'
+					)= _ng_field_key
+
+				else if field_type == 'select'
+					md-select(
+					placeholder=resource_list
+					ng-model=field_key
+					)
+						md-option(
+						ng-repeat=repeat
+						ng-value='option.title'
+						) {{option.title}}
 
 				else if field_type == 'radio'
-						input(
-							id=_id
-							name=_id
-							type=field_type
-							ng-if='asset.editable'
-							ng-value=field_key
-							aria-describedby=help_label
+						md-radio-group(
+						ng-model=field_key
 						)
-						span(
-							name=field_key
-							ng-content=field_key
-							ng-if='!asset.editable'
-						)
+							md-radio-button(
+							ng-repeat=repeat
+							ng-value='option.title'
+							) {{option.title}}
+
+				else if field_type == 'chip'
+					md-chips(
+					placeholder=field_key
+					ng-model=field_key
+					)
+
+				else if field_type == 'autocomplete'
+					md-autocomplete(
+					ng-disabled="ctrl.isDisabled"
+					md-no-cache="ctrl.noCache"
+					md-selected-item="ctrl.selectedItem"
+					md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+					md-search-text="ctrl.searchText"
+					md-selected-item-change="ctrl.selectedItemChange(item)"
+					md-items="item in ctrl.querySearch(ctrl.searchText)"
+					md-item-text="item.display"
+					md-min-length="0"
+					)
 
 				else
-					input(
-						id=_id
-						name=_id
+
+					md-input-container
+						input(
 						type=field_type
-						ng-if='asset.editable'
+						ng-model=field_key
 						ng-value=field_key
-						aria-describedby=help_label
-					)
-					span(
-						name=field_key
-						ng-content=field_key
-						ng-if='!asset.editable'
-					)
-				+helptext(field_key)
+						placeholder=field_key
+						value=_ng_field_key
+						)

@@ -1,8 +1,15 @@
 mixin button(text, action, style, icon, when)
-	.btn(
-		ng-if=when
-		class=style
-		ng-click=action
+	md-button.md-raised(
+	class=style
+	ng-click=action
 	)
 		.fa.fa-fw(class=icon) &nbsp;
+		span(i18n=text)= text
+
+mixin button_fab(text, action, style, icon, when)
+	md-button.md-raised.md-fab(
+	class=style
+	ng-click=action
+	)
+		.fa(class=icon) &nbsp;
 		span(i18n=text)= text

@@ -3,25 +3,27 @@ include _mixin_buttons
 include _mixin_media
 include _mixin_rating
 
-div.asset-basic(ng-controller='Site.Welcome')
-	form.form-horizontal(action='asset-basic', method='put' ng-repeat='asset in assets')
-		div.row
-			div.col-xs-12.col-md-4
-				+media('custom-image',250,150,"hello")
-				+stars
-			div.col-xs-12.col-md-8
+div.asset-basic(ng-controller='Site.Welcome' layout='column')
+	form(name="test" action='asset-basic', method='put' ng-repeat='asset in assets')
+
+		div(layout='row' layout-align='center start' )
+			div(flex='20')
+				+media('medium-image')
+				+stars()
+			div(flex='40')
 				+input('text','asset.title', null, null)
 				+input('textarea','asset.description', null, null)
-				+input('select','asset.category', 'settings.categories', null)
-				+input('select','asset.license', '["red","blue","green"]',null)
-				+input('radio','asset.visible', "{'list':['public','private','green']}" ,null)
-				+input('radio','asset.visible', "{'list':['public','private','green']}" ,null)
-				+input('checkbox','asset.private', null ,null)
+				+input('select','asset.visibility', '_sys.visibility', null)
+				+input('radio','asset.license', '_sys.licenses' ,null)
+				+input('checkbox','asset.category', '_sys.categories' ,null)
+			div(flex='40')
+				div mixin input(field_type, field_key, resource_list, sys_val)
+				div mixin button(text, action, style, icon, when)
+				div mixin button_fab(text, action, style, icon, when)
+				div mixin media(field_type, width, height, clickaction)
 
-		div.row
-			div.div.col-xs-12.right
-				+button('Update','put(asset._id)','btn-success btn-small','fa-check', '$scope.form.dirty')
-				span &nbsp;
+		div(layout='row')
+			div(flex)
 				+button('Cancel','put(asset._id)','btn-default btn-small','fa-times', '$scope.form.dirty')
-				span &nbsp;
 				+button('Delete','put(asset._id)','btn-danger btn-small','fa-trash', '$scope.form.dirty')
+				+button_fab(null,'put(asset._id)','md-primary','fa-check fa-2x', '$scope.form.dirty')

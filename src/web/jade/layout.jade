@@ -1,5 +1,5 @@
 doctype html
-html(lang="en" )
+html(lang='en' ng-app='ito-dataviewer' )
 	head
 		meta(http-equiv='X-UA-Compatible' content='IE=edge')
 		meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
@@ -7,9 +7,8 @@ html(lang="en" )
 		meta(name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no')
 		title ITO-Suite
 		link(rel='stylesheet', href='./css/ng-ito-dataviewer.css')
-		script(src='/js/ng-ito-dataviewer-dependencies.min.js')
-		script(src='/js/ng-ito-dataviewer-frontend.js')
-	body(spellcheck='false' ng-app='ito-dataviewer')
+
+	body(layout='column' spellcheck='false' )
 
 		block content
 
@@ -18,3 +17,5 @@ html(lang="en" )
 		footer &copy; ITO-Suite
 
 		scripts
+			script(src='/js/ng-ito-dataviewer-dependencies.min.js')
+			script(src='/js/ng-ito-dataviewer-frontend.js')

@@ -13,7 +13,7 @@ This is the core Client UI and Logic for asset creation, reading, updating and d
 - html5 audio / video player
 - inline editing of ALL editable fields
 - json-ld (microformat, rdf-a, dci)
-
+- material design interface
 
 ## STATUS
 
@@ -42,6 +42,7 @@ Make a feature branch on your fork and make a pull request against the dev branc
 - [ ] Tests (basic)
 - [ ] Tests (advanced)
 - [ ] Tests (distribution ready)
+- [X] Translation System
 - [ ] Translations
 - [ ] json-ld structure
 
@@ -51,7 +52,7 @@ Make a feature branch on your fork and make a pull request against the dev branc
 - [ ] Integrate historic code
 - [ ] Angular factories and components
 - [ ] Restangular integration
-- [ ] i18n directive
+- [ ] i18n directives
 
 
 #### TO DO STYLE

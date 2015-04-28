@@ -1,18 +1,18 @@
 /* global angular */
 (function () {
     'use strict';
-    angular.module('ito-dataviewer.welcome', ['ngMaterial'])
-        .controller('Site.Welcome', ['$scope', function ($scope) {
+    angular.module('ito-dataviewer.welcome', ['ngMaterial','ngSanitize','pascalprecht.translate'])
+        .controller('Site.Welcome', ['$scope','$translate', function ($scope,$translate) {
                 $scope.assets = {
                     asset : {
                         _id : '00001',
                         title: "thing",
-                        description: null,
+                        description: "somethinganything",
                         category: {
                             thing2: "wow"
                         },
-                        license: true,
-                        visible: true,
+                        license: "copyright",
+                        visible: "public",
                         privacy: true,
                         editable: true
                     }
@@ -52,6 +52,27 @@
                         three : {
                             title: 'wowow'
                         }
+                    },
+                    i18nSrc : {
+                        cancel : {
+                            en : 'Cancel',
+                            de : 'Abrechen'
+                        },
+                        delete : {
+                            en : 'Delete',
+                            de : 'Löschen'
+                        },
+                        asset : {
+                            title : {
+                                en : "Title",
+                                de : "Titel"
+                            },
+                            description : {
+                                en : "Description",
+                                de : "Beschreibung"
+                            }
+
+                        }
                     }
                 };
             $scope.$apply();
@@ -62,12 +83,9 @@
             $scope.save = function() {
                 alert('Form was valid!');
             };
-            $scope.i18n = function (string,language) {
 
-            }
             */
         }])
-
         .controller('Site.About', ['$scope', function ($scope) {
             $scope.$parent.status = 'ready';
         }])

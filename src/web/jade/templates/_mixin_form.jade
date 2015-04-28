@@ -27,7 +27,11 @@ mixin input(field_type, field_key, resource_list, sys_val)
 	- var _id = field_key+'{{asset.id}}'
 	- var help_label = field_key+'{{asset.id}}-help'
 	- var repeat = 'option in '+resource_list;
+	- var options = 'option.title for option in '+resource_list;
 	- var _ng_field_key = '{{' + field_key + '}}'
+	- var _i18n_field_key = '{{"' + field_key + '" | translate }}'
+
+	// consider using labels instead of placeholders cuz they're fucked.
 
 	div(
 		class=field_type
@@ -46,6 +50,7 @@ mixin input(field_type, field_key, resource_list, sys_val)
 					type='file'
 					aria-label=help_label
 					ng-model=field_key
+					placeholder=_i18n_field_key
 					)
 
 					img(
@@ -70,13 +75,12 @@ mixin input(field_type, field_key, resource_list, sys_val)
 
 						textarea(
 						ng-model=field_key
-						placeholder=field_key
+						placeholder=_i18n_field_key
 						ng-if='asset.editable'
 						value=_ng_field_key
-						class='form-control'
 						rows='1'
-						style='resize: vertical'
 						aria-label=help_label
+						i18n=field_key
 						)= _ng_field_key
 
 				else if field_type == 'checkbox'
@@ -99,6 +103,7 @@ mixin input(field_type, field_key, resource_list, sys_val)
 					md-select(
 					placeholder=resource_list
 					ng-model=field_key
+					ng-options=options
 					)
 						md-option(
 						ng-repeat=repeat
@@ -107,16 +112,18 @@ mixin input(field_type, field_key, resource_list, sys_val)
 
 				else if field_type == 'radio'
 						md-radio-group(
+						placeholder=resource_list
 						ng-model=field_key
 						)
 							md-radio-button(
 							ng-repeat=repeat
 							ng-value='option.title'
+							aria-label="{{option.title}}"
 							) {{option.title}}
 
 				else if field_type == 'chip'
 					md-chips(
-					placeholder=field_key
+					placeholder=_i18n_field_key
 					ng-model=field_key
 					)
 
@@ -140,6 +147,6 @@ mixin input(field_type, field_key, resource_list, sys_val)
 						type=field_type
 						ng-model=field_key
 						ng-value=field_key
-						placeholder=field_key
-						value=_ng_field_key
+						placeholder=_i18n_field_key
+						i18n=field_key
 						)

@@ -4,13 +4,43 @@
         'ngAria',
         'ngMaterial',
         'ngRoute',
+        'ngSanitize',
         'ngAnimate',
         'ngTouch',
         'angular-locker',
         'cgBusy',
+        'pascalprecht.translate',
         'ito-dataviewer.welcome'
     ])
-        .config(['$routeProvider', '$locationProvider', '$animateProvider','lockerProvider', function($routeProvider, $locationProvider, $animateProvider, lockerProvider) {
+        .config(['$routeProvider', '$locationProvider', '$animateProvider','lockerProvider', '$translateProvider', function($routeProvider, $locationProvider, $animateProvider, lockerProvider, $translateProvider) {
+
+
+
+            $translateProvider.translations('en', {
+                cancel: 'Cancel',
+                asset: {
+                    title: 'Title',
+                    description: 'Description'
+                },
+                banned: 'Banned',
+                FOO: 'This is a paragraph.',
+                BUTTON_LANG_EN: 'english',
+                BUTTON_LANG_DE: 'german'
+            });
+            $translateProvider.translations('de', {
+                asset : {
+                    title: 'Titel',
+                    description: 'Beschreibung'
+                },
+                cancel: 'Abrechen',
+                banned: 'Verboten',
+                FOO: 'Dies ist ein Paragraph.',
+                BUTTON_LANG_EN: 'englisch',
+                BUTTON_LANG_DE: 'deutsch'
+            });
+            $translateProvider.preferredLanguage('de');
+            $translateProvider.useSanitizeValueStrategy('escaped');
+
 
             $animateProvider.classNameFilter(/animate-/);
             $locationProvider.html5Mode(true);

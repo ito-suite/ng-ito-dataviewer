@@ -56,12 +56,14 @@ gulp.task('js-deps', ['modernizr'], function () {
         'bower_components/angular-animate/angular-animate.js',
         'bower_components/angular-aria/angular-aria.js',
         'bower_components/angular-route/angular-route.js',
+        'bower_components/angular-sanitize/angular-sanitize.js',
         'bower_components/angular-messages/angular-route.js',
         'bower_components/angular-material/angular-material.js',
         'bower_components/angular-busy/angular-busy.js',
         'bower_components/ng-file-upload/angular-file-upload.js',
         'bower_components/angular-locker/dist/angular-locker.js',
         'bower_components/angular-touch/angular-touch.js',
+        'bower_components/angular-translate/angular-translate.js',
         'bower_components/async/lib/async.js'
 
     ])

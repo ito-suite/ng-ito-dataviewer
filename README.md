@@ -38,21 +38,19 @@ Make a feature branch on your fork and make a pull request against the dev branc
 - [X] Jade Mixins
 - [X] Gulp DEV Watch with Browser Sync
 - [ ] Gulp PROD Build for ITO-Suite
-- [ ] Jade builder from JSON
 - [ ] Tests (basic)
 - [ ] Tests (advanced)
 - [ ] Tests (distribution ready)
-- [X] Translation System
 - [ ] Translations
 - [ ] json-ld structure
 
 
 #### TO DO ANGULAR
-
+- [X] Upload Interface
+- [X] Translation System
 - [ ] Integrate historic code
 - [ ] Angular factories and components
 - [ ] Restangular integration
-- [ ] i18n directives
 
 
 #### TO DO STYLE

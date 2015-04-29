@@ -2,6 +2,7 @@ mixin button(TEXT, action, style, icon, when)
 	md-button.md-raised(
 	class=style
 	ng-click=action
+	aria-label=TEXT
 	)
 		.fa.fa-fw(class=icon) &nbsp;
 		span(translate)= TEXT
@@ -10,6 +11,7 @@ mixin button_fab(text, action, style, icon, when)
 	md-button.md-raised.md-fab(
 	class=style
 	ng-click=action
+	aria-label=TEXT
 	)
-		.fa(class=icon) &nbsp;
+		.fa(class=icon)
 		span(translate)= TEXT

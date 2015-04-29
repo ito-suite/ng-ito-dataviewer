@@ -7,6 +7,7 @@
         'ngSanitize',
         'ngAnimate',
         'ngTouch',
+        'ngFileUpload',
         'angular-locker',
         'cgBusy',
         'pascalprecht.translate',
@@ -17,12 +18,15 @@
 
 
             $translateProvider.translations('en', {
-                cancel: 'Cancel',
                 asset: {
                     title: 'Title',
                     description: 'Description'
                 },
-                banned: 'Banned',
+                actions: {
+                    cancel: 'Cancel',
+                    delete: 'Delete'
+
+                },
                 FOO: 'This is a paragraph.',
                 BUTTON_LANG_EN: 'english',
                 BUTTON_LANG_DE: 'german'
@@ -32,18 +36,22 @@
                     title: 'Titel',
                     description: 'Beschreibung'
                 },
-                cancel: 'Abrechen',
+                cancel: 'Abbrechen',
+                delete: 'Löschen',
                 banned: 'Verboten',
                 FOO: 'Dies ist ein Paragraph.',
                 BUTTON_LANG_EN: 'englisch',
                 BUTTON_LANG_DE: 'deutsch'
             });
-            $translateProvider.preferredLanguage('de');
+            $translateProvider.preferredLanguage('en');
             $translateProvider.useSanitizeValueStrategy('escaped');
 
 
             $animateProvider.classNameFilter(/animate-/);
-            $locationProvider.html5Mode(true);
+            $locationProvider.html5Mode({
+                enabled: true
+                //requireBase: false
+            });
 
             // these are from simulacrum
             /*

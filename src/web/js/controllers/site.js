@@ -1,18 +1,39 @@
 /* global angular */
 (function () {
     'use strict';
-    angular.module('ito-dataviewer.welcome', ['ngMaterial','ngSanitize','pascalprecht.translate'])
-        .controller('Site.Welcome', ['$scope','$translate', function ($scope,$translate) {
+    angular.module('ito-dataviewer.welcome', ['ngMaterial','ngSanitize','ngFileUpload','pascalprecht.translate'])
+        .controller('Site.Welcome', ['$scope','$translate','Upload', function ($scope,$translate,upload) {
+            $scope.$watch('files', function () {
+                $scope.upload($scope.files);
+            });
+
+            $scope.upload = function (files) {
+                if (files && files.length) {
+                    for (var i = 0; i < files.length; i++) {
+                        var file = files[i];
+                        Upload.upload({
+                            url: 'upload/url',
+                            fields: {'username': $scope.username},
+                            file: file
+                        }).progress(function (evt) {
+                            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                            console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+                        }).success(function (data, status, headers, config) {
+                            console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+                        });
+                    }
+                }
+            };
+
                 $scope.assets = {
                     asset : {
                         _id : '00001',
                         title: "thing",
+                        url: '/images/test.jpg',
                         description: "somethinganything",
-                        category: {
-                            thing2: "wow"
-                        },
+                        category: ['wow'],
                         license: "copyright",
-                        visible: "public",
+                        visibility: "public",
                         privacy: true,
                         editable: true
                     }
@@ -75,16 +96,6 @@
                         }
                     }
                 };
-            $scope.$apply();
-            /*
-            $scope.clearValue = function(model) {
-                $scope.model = undefined;
-            };
-            $scope.save = function() {
-                alert('Form was valid!');
-            };
-
-            */
         }])
         .controller('Site.About', ['$scope', function ($scope) {
             $scope.$parent.status = 'ready';

@@ -2,40 +2,31 @@ mixin mime(type)
 	// type is one of: "icon","icontext","text"
 	.mimetype()
 
+
+
 mixin media(field_type, width, height, clickaction)
+	// ngf-thumbnail -> binds to the file button
+	- width = (isNaN(parseInt(width))) ? 80 : width
+	- height = (isNaN(parseInt(height))) ? width : height
+	div(class=field_type)
+		if field_type == 'image'
 
-
-	div(flex class=field_type)
-
-		if field_type == 'custom-image'
-			- _src = 'http://placehold.it/'+ width + 'x' + height + '/0000cc/000000'
-			- _clickaction = 'alert("' + clickaction+ '")'
+			- _img_src = 'http://placehold.it/'+ width + 'x' + height + '/0000cc/000000'
+			- _img_style = 'max-width:'+ width +'px;max-height:'+ height +'px;'
 
 			img(
-				src=_src
-				ng-src='asset.thumbnailUrl'
-				alt='{{asset.title}}'
-				onclick=_clickaction
+			src=_img_src
+			alt='{{asset.title}}'
+			ng-if='!files[0]'
+			style=_img_style
+			)
+			img(
+			ng-repeat='file in files'
+			ngf-thumbnail='file'
+			ng-if='file'
+			style=_img_style
 			)
 
-		else if field_type == 'thumbnail-image'
-			img(
-				src='http://placehold.it/80x80/0000cc/000000'
-				ng-if='asset.thumbnailUrl'
-				ng-src='asset.thumbnailUrl'
-				alt='{{asset.title}}'
-			)
-		else if field_type == 'medium-image'
-			img(
-				src='http://placehold.it/240x240/0000cc/000000'
-				alt='{{asset.title}}'
-			)
-		else if field_type == 'large-image'
-			img(
-				src='http://placehold.it/800x800/0000cc/000000'
-				ng-src='asset.largeUrl'
-				alt='{{asset.title}}'
-			)
 		else if field_type == 'video'
 			+controls('video')
 			video(

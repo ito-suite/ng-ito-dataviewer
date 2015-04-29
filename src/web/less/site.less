@@ -47,7 +47,7 @@
 }
 
 md-icon {
-  margin:-10px 0 0 0;
+  margin:-8px 0 0 0;
 }
 
 body {
@@ -79,18 +79,28 @@ body {
 .md-fab .fa {
   margin:10px;
 }
-.md-input-container label {
-  padding-left:80px!important;
+.md-fab > label {
+  display:block;
 }
+.md-input-container label {
+  opacity:0!important;
+}
+input[type="file"] {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0 !important;
 
+}
 textarea {
   margin:20px 0 0 0;
   min-height:36px!important;
   //max-height:250px!important;
-  resize: vertical!important;
+  //resize: vertical!important;
+  //overflow-y:auto!important;
 }
+
 // FIX FOR LATE PLACEHOLDERS
-// BECAUSE OF translate.js
 ::-webkit-input-placeholder {
   opacity:0;
 }
@@ -221,7 +231,6 @@ a.mimetype:before {
 .rating {
   unicode-bidi: bidi-override;
   direction: rtl;
-  text-align:center;
   font-size:1.5em;
 }
 .rating span.star {

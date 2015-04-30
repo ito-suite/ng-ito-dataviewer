@@ -35,7 +35,7 @@
                         license: "copyright",
                         visibility: "public",
                         privacy: true,
-                        editable: true
+                        disabled: true
                     }
                 };
                 $scope._sys = {

@@ -11,15 +11,24 @@ div.asset-basic(ng-controller='Site.Welcome' layout='column')
 				md-toolbar
 					div.md-toolbar-tools
 
-						div(flex ng-if='asset.editable')
-							+button('cancel','put(asset._id)','btn-default btn-small','fa-times', '$scope.form.dirty')
-							+button('delete','delete(asset._id)','btn-danger btn-small','fa-trash', '$scope.form.dirty')
-							+button('unlocked','asset.editable = false','btn-default btn-small','fa-unlock', '$scope.form.dirty')
-							span(ng-if="test.$dirty")
-								+button_fab(null,'put(asset._id)','md-primary','fa-check fa-2x', '$scope.form.dirty')
-						div(flex ng-if='!asset.editable')
-							+button('locked','asset.editable = true','btn-default btn-small','fa-lock', '$scope.form.dirty')
-						span(flex)
+						div(flex)
+							//, '$scope.form.dirty'
+							div(layout='row' layout-align='start center')
+
+								div(flex='40' ng-if='!asset.disabled')
+									+button('cancel','put(asset._id)','btn-default btn-small','fa-times')
+									+button('delete','delete(asset._id)','btn-danger btn-small','fa-trash')
+								//+button('undisabled','asset.disabled = false','btn-default btn-small','fa-unlock')
+
+								div(flex='15')
+									//+button_fab(null,'put(asset._id)','md-primary','fa-check fa-2x')
+
+								div(flex='35')
+
+								div(flex)
+									+lockswitch('disabled','asset.disabled','asset.disabled = !asset.disabled','fa-lock')
+									//+inlineswitch('undisabled','asset.disabled = true','fa-unlock','!asset.disabled')
+
 
 				md-content(layout="row" layout-padding flex class="md-padding")
 					div(flex)

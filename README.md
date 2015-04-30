@@ -1,6 +1,6 @@
 #ITO-dataviewer
 
-This is the core Client UI and Logic for asset creation, reading, updating and deleting (CRUD). It includes a number of basic views composed of powerful dynamic jade mixins that *might at some point* be constructed from json at build time.
+This is the core Client UI and Logic for asset creation, reading, updating and deleting (CRUD). It includes a number of basic views composed of powerful dynamic jade mixins that *might at some point* be constructed from json at build time - or even dynamically created from template stubs according to currently active scope.
 
 
 ## FEATURES

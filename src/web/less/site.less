@@ -72,6 +72,56 @@ body {
 }
 
 // FORM ELEMENTS //
+.labelRight {
+  float:right;
+  margin-left:20px;
+}
+.labelRight {
+  md-switch {
+    font-family: FontAwesome !important;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    margin: 6px 0 0 0;
+
+    .md-thumb {
+      height: 28px !important;
+      width: 28px !important;
+      position: relative !important;
+      margin: -3px 0 0 -10px;
+    }
+  }
+}
+
+.labelRight.locked md-switch {
+  .md-thumb {
+    background:black!important;
+  }
+  .md-thumb::after {
+    content: "\f023" !important;
+    color: #fff !important;
+    position: relative !important;
+    top: -1px !important;
+    margin: 0 0 0 7px !important;
+    padding: 0 !important
+  }
+}
+
+.labelRight.unlocked   md-switch {
+  .md-thumb {
+    margin: -3px 0 0 -10px;
+  }
+  .md-thumb::after{
+    content: "\f09c"!important;
+    color:black!important;
+    position:relative!important;
+    top:-2px!important;
+    margin:0px 0 0 3px!important;
+    padding:0!important
+  }
+}
+
+
 .help-block {
   color:#555!important;
 }

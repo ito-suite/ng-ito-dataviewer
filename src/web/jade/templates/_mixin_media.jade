@@ -12,7 +12,7 @@ mixin media(field_type, width, height, clickaction)
 		if field_type == 'image'
 
 			- _img_src = 'http://placehold.it/'+ width + 'x' + height + '/0000cc/000000'
-			- _img_style = 'max-width:'+ width +'px;max-height:'+ height +'px;'
+			- _img_style = 'max-width:'+ width +'px;max-height:'+ height +'px;text-align:center'
 
 			img(
 			src=_img_src

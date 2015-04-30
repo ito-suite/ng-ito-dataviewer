@@ -67,7 +67,10 @@
             $routeProvider.otherwise({redirectTo: '/'});
             */
             //$routeProvider.otherwise({redirectTo: '/'});
-            $routeProvider.when('/test', {controller: 'Site.Welcome'});
+            $routeProvider.when('/', {
+                templateUrl: '/index.html',
+                controller: 'Site.Welcome'
+            });
             lockerProvider.setDefaultDriver('local')
                 .setDefaultNamespace('ito-dataviewer')
                 .setSeparator('.');

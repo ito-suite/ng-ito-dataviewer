@@ -96,6 +96,20 @@
                         }
                     }
                 };
+            $scope.acl = function() {
+                // we're going to look at the asset first,
+                // then compare the user persona
+                // and allow / disallow UI interaction
+                // this function will be repeated server side
+                // to prevent malicious clients from being evil
+
+                // LOOK AT /api/version/me.json
+                // waterfall:
+                    // compare item ACL with user ACL
+                    // if it is viewable > show it
+                    // if it is editable > set edit flag
+
+            }
         }])
         .controller('Site.About', ['$scope', function ($scope) {
             $scope.$parent.status = 'ready';

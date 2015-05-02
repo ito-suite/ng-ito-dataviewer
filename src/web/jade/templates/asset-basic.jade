@@ -10,20 +10,18 @@ div.asset-basic(ng-controller='Site.Welcome' layout='column')
 			md-whiteframe(class="md-whiteframe-z2")
 				md-toolbar
 					div.md-toolbar-tools
-
 						div(flex)
 							//, '$scope.form.dirty'
 							div(layout='row' layout-align='start center')
-
 								div(flex='40' ng-if='!asset.disabled')
 									+button('cancel','put(asset._id)','btn-default btn-small','fa-times')
 									+button('delete','delete(asset._id)','btn-danger btn-small','fa-trash')
 								//+button('undisabled','asset.disabled = false','btn-default btn-small','fa-unlock')
 
-								div(flex='15')
+								//div(flex='15')
 									//+button_fab(null,'put(asset._id)','md-primary','fa-check fa-2x')
 
-								div(flex='35')
+								div(flex='40')
 
 								div(flex)
 									+lockswitch('disabled','asset.disabled','asset.disabled = !asset.disabled','fa-lock')
@@ -36,13 +34,13 @@ div.asset-basic(ng-controller='Site.Welcome' layout='column')
 
 						div(layout='row' layout-align='center start')
 							+input('fileimage','asset.url', null, null)
-
 					div(flex='40')
 						+input('text','asset.title', null, null)
 						+input('textarea','asset.description', null, null)
 						+input('chip','asset.category', '_sys.visibility', null)
 						+input('radio','asset.visibility', '_sys.visibility', null)
 						+input('select','asset.license', '_sys.licenses' ,null)
+
 						//+input('checkbox','asset.category', '_sys.categories' ,null)
 
 					div(flex)

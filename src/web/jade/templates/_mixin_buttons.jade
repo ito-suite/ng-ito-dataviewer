@@ -23,16 +23,21 @@ mixin button_fab(TEXT, action, style, icon, _ng_if)
 		span= _i18n_field_ke
 
 mixin lockswitch(TEXT, model, action, icon, _ng_if)
-	- var _i18n_field_key = '{{"' + TEXT + '" | translate }}'
+	//- var _i18n_field_key = '{{"' + TEXT + '" | translate }}'
+	//- var _i18n_field_key = {{"+ model +" && 'locked' || 'unlocked'}}
 	- var _switch_class = "{{"+ model +" && 'locked' || 'unlocked'}}"
 	// we're using this singelton for the LOCK switch
 	// and probably should abstract it out.
 	.labelRight(
 	ng-if=_ng_if
 	class=_switch_class
-
 	)
+		// disabling the md-switch does not work.
 		md-switch.md-primary(
 		ng-model=model
 		ng-if=_ng_if
+		ng-disabled
 		)
+		md-tooltip(
+		md-direction='left'
+		)= _switch_class

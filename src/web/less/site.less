@@ -8,10 +8,13 @@
 *
 ****************************** */
 
-/* turn off the firefox outline SHIT!!!*/
-button.md-button::-moz-focus-inner,
-button.md-chip-remove::-moz-focus-inner
 
+.data-control {
+  width:500px!important;
+}
+
+/* turn off the firefox outline SHIT!!!*/
+button::-moz-focus-inner
 {
   border: 1px dotted transparent!important;
 }
@@ -85,10 +88,10 @@ body {
     margin: 6px 0 0 0;
 
     .md-thumb {
-      height: 28px !important;
-      width: 28px !important;
+      height: 32px !important;
+      width: 32px !important;
       position: relative !important;
-      margin: -3px 0 0 -10px;
+      margin: -6px 0 0 -12px;
     }
   }
 }
@@ -101,7 +104,7 @@ body {
     content: "\f023" !important;
     color: #fff !important;
     position: relative !important;
-    top: -1px !important;
+    left: 3px!important;
     margin: 0 0 0 7px !important;
     padding: 0 !important
   }
@@ -109,14 +112,14 @@ body {
 
 .labelRight.unlocked   md-switch {
   .md-thumb {
-    margin: -3px 0 0 -10px;
+    margin: -6px 0 0 -10px;
   }
   .md-thumb::after{
     content: "\f09c"!important;
     color:black!important;
     position:relative!important;
-    top:-2px!important;
-    margin:0px 0 0 3px!important;
+    left:4px!important;
+    margin:0 0 0 3px!important;
     padding:0!important
   }
 }
@@ -143,7 +146,12 @@ textarea {
   //overflow-y:auto!important;
 }
 
-
+md-tooltip {
+  width:100px;
+  text-align:center;
+  right:30px;
+  margin-right:40px!important
+}
 // OUR DISABLED STYLES
 
 md-radio-button[disabled] {

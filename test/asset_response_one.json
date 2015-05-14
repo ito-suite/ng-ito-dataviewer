@@ -1,0 +1,90 @@
+{
+  "responseHeader": {
+    "status":0,
+    "QTime":188
+  },
+  "response":{
+    "numFound":1
+  },
+  "comment":{
+    "about": "This is a sample response for assets that includes a model for interpretation and rendering by the client. It is not normative, because it includes Server Side results. Such results that are not passed to the client are prefixed with '_SS_'",
+    "version": 1
+  },
+  "model": {
+    "_sys":{
+      "display":null
+    }
+  },
+  "start":0,
+  "assets":[{
+    "_SS__sys": {
+      "id":"534fec1ef847ff7840bc49d3",
+      "reference_image_id":"534fec1ef847ff7840bc49d3",
+      "status":1,
+      "acl":"0755",
+      "transience": {
+        "ignore": ["owner","manager","admin"],
+        "views":{
+          "token":"allow",
+          "success":"token.destroy",
+          "fail":"redirect"
+        },
+        "geocage": {
+          "within": ["mapcoords"]
+        },
+        "expires":{
+
+          "daterange":{
+            "start":"asset.date_created",
+            "end":"604800",
+            "_comment":"one week"
+          },
+          "success":"waterfall",
+          "fail":"asset.unlink"
+        },
+        "default":{
+          "show":""
+        }
+      }
+    },
+    "_meta": {
+      "comment":"",
+      "author_id":"5344567d94c07cec4fc6c392",
+      "creator_id":"5344567d94c07cec4fc6c392",
+      "publisher_id":"5344567d94c07cec4fc6c392",
+      "rights_holder_id":"5344567d94c07cec4fc6c392",
+      "date_created": "2015-02-22",
+      "date_modified": "2015-02-28",
+      "license":"Public Domain",
+      "title":"I♥U",
+      "description":"This is a test image with UTF-8 in the title and an attempt at a shell exploit in the file name.",
+      "category":["foo","bar"],
+      "location": { "lat":"-47.150000","long":"-126.716667"},
+      "temporal_start": "Date",
+      "temporal_end": "Date",
+      "starrers":50,
+      "stars":5,
+      "looks":0,
+      "basename": "iluvthisrmrf"
+    },
+    "_ito": {
+      "baseuri": "/api/v1/534fec1ef847ff7840bc49d3/iluvthisrmrf",
+      "original": {
+        "original_filename":"i luvthis;echo exploit > logfile ;.jpg",
+        "suffix":".jpg",
+        "mime_type":"image/jpg",
+        "filehash":"534fec1ef847ff7840bc49d3",
+        "size":214748,
+        "ipfs": {
+          "hash-of-object": "QmRzTuh2Lpuz7Gr39stNr6mTFdqAghsZec1JoUnfySUzcy",
+          "name-path-to-object": "iluvthisrmrf.jpg"
+        }
+      },
+      "thumb": {
+        "":""
+      },
+      "mime_type":"img/jpeg"
+
+    }
+  }]
+}

@@ -82,7 +82,8 @@ The first gate is the domain. Without domain access, no other gates can be passe
 
 Opening the box **might** immutably change the content, potentially even destroying it.
 
-For example:
+**For example:**
+
 One concrete server might be hosting two domains. Let us call these domains "hot" and "cold". There is are two types of domain users, "registered" and "unregistered". Either a user is unregistered at both domains, registered at one of the domains or registered at both domains. When accessing one domain, the registration at the other domain is irrelevant from the perspective of the domain, but not necessarily from the perspective of the user. For the user, these domains might as well be "folders" composed of symlinks. Perhaps there are threads on both the "hot" and the "cold" domains for "beverages". The user we are interested in at the moment is registered at both domains. They upload pictures of coffee to their metadirectory.
 
 However, there are times when an asset can link to multiple places. For example, when looking at an asset, it is imperative that someone participated in the adding of this asset. Perhaps their name is a link to some other group of data. But which group is meant? Does the user want to see their profile, or perhaps other assets of this type by this contributor? Both are valid representations of a set within the dataset, so how can they be determined at runtime? One way would be to use icons, such as the profile icon to link to the contributor's profile, the folder icon to link to similar assets and the envelope icon to send the contributor a message (about this specific asset). But maybe in the future the user on a phone will want to call the contributor (telephone icon) or send the contributor an encrypted self-destructing neural time-series.
@@ -95,7 +96,7 @@ By mixing in both a rules layer and an effect layer in the access control, we ca
 
 Which means that the asset has transience enabled by the asset owner, and that it has two types of transience enabled, based upon the number of views and a duration. In this case the asset will be purged from the database and FS after one view OR after the passage of 7 days (according to unix time) and then the asset owner(s) will be notified according to their notification preferences.
 
-The constructor consists of conditions and reactions that can be combined at will.
+The constructor consists of conditions and reactions that can be combined at will...
 
 ```
 REQUEST:

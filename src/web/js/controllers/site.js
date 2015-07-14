@@ -2,7 +2,7 @@
 (function () {
     'use strict';
     angular.module('ito-dataviewer.welcome', ['ngMaterial','ngSanitize','ngFileUpload','pascalprecht.translate'])
-        .controller('Site.Welcome', ['$scope','$translate','Upload', function ($scope,$translate,upload) {
+        .controller('Site.Welcome', ['$scope','$translate','Upload','$mdSidenav', function ($scope,$translate,upload,$mdSidenav) {
             $scope.$watch('files', function () {
                 $scope.upload($scope.files);
             });
@@ -24,7 +24,20 @@
                     }
                 }
             };
-
+            $scope.openRightMenu = function() {
+                $mdSidenav('right').toggle();
+            };
+            function DemoCtrl($mdDialog) {
+                var vm = this;
+                this.announceClick = function (index) {
+                    $mdDialog.show(
+                        $mdDialog.alert()
+                            .title('You clicked!')
+                            .content('You clicked the menu item at index ' + index)
+                            .ok('Nice')
+                    );
+                };
+            }
                 $scope.assets = {
                     asset : {
                         _id : '00001',
@@ -38,7 +51,25 @@
                         disabled: true
                     }
                 };
+                $scope.site = {
+                  title: "Leerstandsmelder 2.0",
+                  copyrightnotice: "&copy; ITO-Suite",
+                  breadcrumb: "Berlin",
+                  logo: "/images/logo.png",
+                  lang: "English"
+                };
+                $scope.user = {
+                  me: {
+                      name: "Daniel"
+                  }
+                };
+
                 $scope._sys = {
+                    cities: {
+                        berlin:{title:"Berlin"},
+                        munich:{title:"München"},
+                        hamburg:{title:"Hamburg"}
+                    },
                     visibility : {
                         one:{
                             title: 'public'
@@ -110,6 +141,9 @@
                     // if it is editable > set edit flag
 
             }
+        }])
+        .controller('Site.', ['$scope', function ($scope) {
+            $scope.$parent.status = 'ready';
         }])
         .controller('Site.About', ['$scope', function ($scope) {
             $scope.$parent.status = 'ready';

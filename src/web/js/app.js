@@ -13,7 +13,13 @@
         'pascalprecht.translate',
         'ito-dataviewer.welcome'
     ])
-        .config(['$routeProvider', '$locationProvider', '$animateProvider','lockerProvider', '$translateProvider', function($routeProvider, $locationProvider, $animateProvider, lockerProvider, $translateProvider) {
+        .config(['$routeProvider', '$locationProvider', '$animateProvider','lockerProvider', '$translateProvider', '$mdThemingProvider', function($routeProvider, $locationProvider, $animateProvider, lockerProvider, $translateProvider, $mdThemingProvider) {
+
+            // todo: abstract this theme style out to config
+            $mdThemingProvider.theme('default')
+                .primaryPalette('blue-grey')
+                .accentPalette('red');
+
             $translateProvider.translations('en', {
                 asset: {
                     title: 'Title',
@@ -23,6 +29,9 @@
                     cancel: 'Cancel',
                     delete: 'Delete'
 
+                },
+                user: {
+                    name: 'Username: {{value}}'
                 },
                 FOO: 'This is a paragraph.',
                 BUTTON_LANG_EN: 'english',

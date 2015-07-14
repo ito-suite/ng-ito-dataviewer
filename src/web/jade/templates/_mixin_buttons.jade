@@ -1,14 +1,28 @@
-mixin button(TEXT, action, style, icon, _ng_if)
-	- var _i18n_field_key = '{{"' + TEXT + '" | translate }}'
+mixin button(TEXT, action, style, icon, _ng_if, _sys)
+	- var _i18n_field_key = "{{'" + TEXT + "' | translate }}"
+	//- var _i18n_field_key = "{{" + TEXT + "}}"
 
 	md-button.md-raised(
+	flex layout="row"
 	class=style
 	ng-click=action
 	aria-label=_i18n_field_key
 	ng-if=_ng_if
 	)
-		.fa.fa-fw(class=icon) &nbsp;
-		span= _i18n_field_key
+		span.pull-left.fa.fa-fw.fa-2x(class=icon) &nbsp;
+		span.pull-left()= _i18n_field_key
+
+mixin button_notranslate(TEXT, action, style, icon, _ng_if, _sys)
+	- var _0n_field_key = "{{" + TEXT + "}}"
+
+	md-button.md-raised(
+	class=style
+	ng-click=action
+	aria-label='{{ TEXT }}'
+	ng-if=_ng_if
+	)
+		span.pull-left.fa.fa-fw.fa-2x(class=icon flex) &nbsp;
+		span.pull-left()= _0n_field_key
 
 mixin button_fab(TEXT, action, style, icon, _ng_if)
 	- var _i18n_field_key = '{{"' + TEXT + '" | translate }}'
@@ -16,11 +30,11 @@ mixin button_fab(TEXT, action, style, icon, _ng_if)
 	md-button.md-raised.md-fab(
 	class=style
 	ng-click=action
-	aria-label=_i18n_field_ke
+	aria-label=_i18n_field_key
 	ng-if=_ng_if
 	)
-		.fa(class=icon)
-		span= _i18n_field_ke
+		md-icon.fa(class=icon)
+		//span= _i18n_field_key
 
 mixin lockswitch(TEXT, model, action, icon, _ng_disabled)
 	//- var _i18n_field_key = '{{"' + TEXT + '" | translate }}'

@@ -81,14 +81,16 @@ mixin input(field_type, field_key, resource_list, sys_val)
 						//md-maxlength='500'
 
 				else if field_type == 'checkbox'
-					md-input-container.md-input-has-value
+					md-input-container.md-input-has-value.md-input-nomargin
 						label=_i18n_field_key
-						md-checkbox(
-						ng-model=field_key
-						aria-label=help_label
-						class="md-warn"
-						ng-disabled='asset.disabled'
-						)= _ng_field_key
+					md-checkbox(
+					ng-repeat=repeat
+					ng-model=field_key
+					aria-label=help_label
+					ng-disabled='asset.disabled'
+					ng-value='option.title'
+					value='{{option.title}}'
+					)= _ng_field_key
 
 
 				else if field_type == 'select'

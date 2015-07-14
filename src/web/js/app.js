@@ -14,9 +14,6 @@
         'ito-dataviewer.welcome'
     ])
         .config(['$routeProvider', '$locationProvider', '$animateProvider','lockerProvider', '$translateProvider', function($routeProvider, $locationProvider, $animateProvider, lockerProvider, $translateProvider) {
-
-
-
             $translateProvider.translations('en', {
                 asset: {
                     title: 'Title',

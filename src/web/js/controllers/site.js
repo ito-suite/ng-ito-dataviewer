@@ -31,7 +31,7 @@
                         title: "thing",
                         url: '/images/test.jpg',
                         description: "somethinganything",
-                        category: ['wow'],
+                        category: "thing",
                         license: "copyright",
                         visibility: "public",
                         privacy: true,

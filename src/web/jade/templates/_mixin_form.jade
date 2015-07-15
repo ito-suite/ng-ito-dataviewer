@@ -24,7 +24,7 @@ mixin helptext(field_key)
 		ng-if=ng_infotext
 	)= help_i18n
 
-mixin input(field_type, field_key, resource_list, sys_val)
+mixin input(field_type, field_key, resource_list, sys_val, no_label)
 	- var _id = field_key+'{{asset.id}}'
 	- var help_label = field_key+'{{asset.id}}-help'
 	- var repeat = 'option in '+resource_list;
@@ -61,7 +61,6 @@ mixin input(field_type, field_key, resource_list, sys_val)
 
 
 				else if field_type == 'slider'
-					//
 					md-slider(
 					flex
 					min="0"
@@ -82,7 +81,8 @@ mixin input(field_type, field_key, resource_list, sys_val)
 
 				else if field_type == 'checkbox'
 					md-input-container.md-input-has-value.md-input-nomargin
-						label=_i18n_field_key
+						if no_label != true
+							label=_i18n_field_key
 					md-checkbox(
 					ng-repeat=repeat
 					ng-model=field_key
@@ -95,7 +95,8 @@ mixin input(field_type, field_key, resource_list, sys_val)
 
 				else if field_type == 'select'
 					md-input-container.md-input-has-value.md-input-nomargin
-						label=_i18n_field_key
+						if no_label != true
+							label=_i18n_field_key
 					md-select(
 					placeholder=_i18n_field_key
 					ng-model=field_key
@@ -110,7 +111,8 @@ mixin input(field_type, field_key, resource_list, sys_val)
 
 				else if field_type == 'radio'
 					md-input-container.md-input-has-value.md-input-nomargin
-						label=_i18n_field_key
+						if no_label != false
+							label=_i18n_field_key
 
 					md-radio-group(
 					ng-model=field_key
@@ -127,7 +129,8 @@ mixin input(field_type, field_key, resource_list, sys_val)
 
 				else if field_type == 'chip'
 					md-input-container.md-input-has-value.md-input-nomargin
-						label=_i18n_field_key
+						if no_label != false
+							label=_i18n_field_key
 					md-chips(
 					placeholder=_i18n_field_key
 					ng-model=field_key

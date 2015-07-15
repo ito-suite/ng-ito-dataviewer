@@ -153,11 +153,11 @@ gulp.task('web', [
 
 // Static Server + watching scss/html files
 gulp.task('serve', function() {
-
+/*
     browserSync.init({
         server: "./dist/web/"
     });
-
+*/
 });
 
 

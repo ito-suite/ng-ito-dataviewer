@@ -53,7 +53,7 @@
                 };
                 $scope.site = {
                   title: "Leerstandsmelder 2.0",
-                  copyrightnotice: "&copy; ITO-Suite",
+                  copyrightnotice: "© ITO-Suite",
                   breadcrumb: "Berlin",
                   logo: "/images/logo.png",
                   lang: "English"
@@ -68,6 +68,15 @@
                     cities: {
                         berlin:{title:"Berlin"},
                         munich:{title:"München"},
+                        munich2:{title:"München"},
+                        munich3:{title:"Münasdchen"},
+                        munic2h:{title:"Müncsadasdhen"},
+                        municsh:{title:"Müncsadasdhen"},
+                        munisdc2h:{title:"Müncsadasdhen"},
+                        municdd2h:{title:"Müncsadasdhen"},
+                        munic4h:{title:"Müncsadhen"},
+                        muni6ch:{title:"Münchasden"},
+                        muni7ch:{title:"Münchasen"},
                         hamburg:{title:"Hamburg"}
                     },
                     visibility : {

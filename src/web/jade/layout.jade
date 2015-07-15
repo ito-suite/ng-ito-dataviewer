@@ -8,8 +8,15 @@ html(lang='en' ng-app='ito-dataviewer' ng-controller='Site.Welcome as ctrl')
 		//base(href='/')
 		title {{site.title}}
 		link(rel='stylesheet', href='./css/ng-ito-dataviewer.css')
-
-	body(layout='column' spellcheck='false' )
+		// prevent FOUC!!!
+		style(type='text/css').
+			.ng-cloak {
+				display: none !important;
+			}
+			body {
+				overflow-y: scroll !important;
+			}
+	body.ng-cloak(layout='column' spellcheck='false' ng-cloak)
 		include templates/asset-navbar
 		block content
 

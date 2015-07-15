@@ -1,0 +1,28 @@
+include _mixin_form
+include _mixin_buttons
+include _mixin_layout
+include _mixin_style
+
+h2 hello
+h2 hello
+
++layout('column','center center',true)
+	+headline("Login")
+
+	+layout('row','center center')
+		+content('column','start center')
+			+input('text','user.name', null, null)
+			+input('password','user.pass', null, null)
+	+layout('row','center center')
+		+content('row','space-between center')
+			//+button('cancel','cancel("login")','md-raised','')
+			+button('Forgot Password','forgot(user.name)','md-raised',null,'user.name')
+			+button_fab('submit','login(user.name,user.pass)','md-primary','fa-sign-in', 'user.name && user.pass')
+
++layout('column','center center',true)
+	h2(translate="Password Recovery")
+
+	+layout('row','center center')
+		+content('row','start center')
+			+input('text','user.email', null, null)
+			+button_fab('submit','forgot(user.email)','md-primary','fa-sign-in','user.email')

@@ -9,8 +9,10 @@ mixin button(TEXT, action, style, icon, _ng_if, _sys)
 	aria-label=_i18n_field_key
 	ng-if=_ng_if
 	)
-		span.pull-left.fa.fa-fw.fa-2x(class=icon) &nbsp;
-		span.pull-left()= _i18n_field_key
+		if icon
+			md-icon
+				span.fa.fa-fw.fa-2x(class=icon)
+		span= _i18n_field_key
 
 mixin button_notranslate(TEXT, action, style, icon, _ng_if, _sys)
 	- var _0n_field_key = "{{" + TEXT + "}}"
